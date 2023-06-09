@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace KlasykaGatunku
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StartingWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartingWindow : Window
     {
-        public MainWindow()
+        public StartingWindow()
         {
             InitializeComponent();
+            MinWidth = 400;
+            MinHeight = 400;
+            MaxWidth = 400;
+            MaxHeight = 400;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -36,6 +39,23 @@ namespace KlasykaGatunku
             {
                 DragMove();
             }
+        }
+
+        private void NextScreenButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void CloseAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShutdownApplication();
+        }
+
+        private void ShutdownApplication()
+        {
+            Application.Current.Shutdown();
         }
     }
 }
