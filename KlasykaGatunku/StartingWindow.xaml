@@ -15,46 +15,13 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         MouseMove="Window_MouseMove"
 >
-    <Window.Resources>
-        <Style x:Key="DefaultButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#202540" />
-            <Setter Property="Foreground" Value="white" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="white" BorderThickness="4" CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="HoverButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#4045c0" />
-                    <Setter Property="Foreground" Value="#bbbbbb" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="#bbbbbb" BorderThickness="4" CornerRadius="5">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
     <Border Background="#202540" CornerRadius="10">
         <Grid>
             <Image Source="pack://application:,,,/Img/logo_white.png" Margin="10,20,10,280" />
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" FontSize="20" FontWeight="Bold" Foreground="White">Authors:</TextBlock>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" FontSize="16" FontWeight="Light" Foreground="White">Krystian Zabawski</TextBlock>
-            <Button x:Name="CloseAppButton" Style="{StaticResource HoverButtonStyle}" Content="&#xEB96;" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="100"  FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="CloseAppButton_Click" />
-            <Button x:Name="NextScreenButton" Style="{StaticResource HoverButtonStyle}" Content="&#xE761;" Margin="10,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="50" Width="100" FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="NextScreenButton_Click" />
+            <Button x:Name="CloseAppButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xEB96;" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="100"  FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="CloseAppButton_Click" />
+            <Button x:Name="NextScreenButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xE761;" Margin="10,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="50" Width="100" FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="NextScreenButton_Click" />
         </Grid>
     </Border>
 </Window>

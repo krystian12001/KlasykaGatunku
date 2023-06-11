@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace KlasykaGatunku.Core
 {
-    /*class RelayCommand : ICommand
+    class RelayCommand : ICommand
     {
         private Action<object> _execute;
 
@@ -25,7 +25,7 @@ namespace KlasykaGatunku.Core
             _canExecute = canExecute;
         }
 
-        public bool CanExectue(object parameter)
+        public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);
         }
@@ -34,5 +34,5 @@ namespace KlasykaGatunku.Core
         {
             _execute(parameter);
         }
-    }*/
+    }
 }

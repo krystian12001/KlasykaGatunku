@@ -37,5 +37,25 @@ namespace KlasykaGatunku
                 DragMove();
             }
         }
+
+        private void MinimizeAppButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShortenExpandAppButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShutdownApplication();
+        }
+
+        private void ShutdownApplication()
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

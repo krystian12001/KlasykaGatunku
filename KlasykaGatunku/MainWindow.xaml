@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlasykaGatunku"
+        xmlns:viewModel="clr-namespace:KlasykaGatunku.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
@@ -14,46 +15,80 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         MouseMove="Window_MouseMove"
 >
-    <Window.Resources>
-        <Style x:Key="DefaultButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#202540" />
-            <Setter Property="Foreground" Value="white" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="white" BorderThickness="4" CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="HoverButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#4045c0" />
-                    <Setter Property="Foreground" Value="#bbbbbb" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="#bbbbbb" BorderThickness="4" CornerRadius="5">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
     <Border Background="#202540" CornerRadius="10">
         <Grid>
-            <Grid Background="#202540" Height="40" VerticalAlignment="Top">
-                <TextBlock Text="Your App Title" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" />
-                <!-- Add any other custom elements to your title bar -->
-                <!-- ... -->
+            <Grid Background="#202540" Height="45" VerticalAlignment="Top" Margin="10,10,10,5">
+                <Image Source="pack://application:,,,/Img/logo_white.png" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                <Button x:Name="MinimizeAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,80,0" Click="MinimizeAppButton_Click">
+                    <Image Source="pack://application:,,,/Img/minimize_button.png" Margin="0,0,0,0" />
+                </Button>
+                <Button x:Name="ShortenExpandAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,40,0" Click="ShortenExpandAppButton_Click">
+                    <Image Source="pack://application:,,,/Img/shorten_window_button.png" Margin="0,0,0,0" />
+                </Button>
+                <Button x:Name="CloseAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,00,0" Click="CloseAppButton_Click">
+                    <Image Source="pack://application:,,,/Img/close_button.png" Margin="0,0,0,0" />
+                </Button>
             </Grid>
+            <Viewbox Margin="5,55,5,5">
+                <Grid Width="115">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="68"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="22"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="1">
+                        <RadioButton Content="Cars"
+                                     Height="10"
+                                     Foreground="White"
+                                     FontSize="3.5"
+                                     Style="{StaticResource MenuButtonStyle}"
+                                     IsChecked="True"
+                                     Command="{Binding CarsViewCommand}"/>
+                        <RadioButton Content="Clients"
+                                     Height="10"
+                                     Foreground="White"
+                                     FontSize="3.5"
+                                     Style="{StaticResource MenuButtonStyle}"
+                                     Command="{Binding ClientsViewCommand}"/>
+                        <RadioButton Content="Rentals"
+                                     Height="10"
+                                     Foreground="White"
+                                     FontSize="3.5"
+                                     Style="{StaticResource MenuButtonStyle}"
+                                     Command="{Binding RentalsViewCommand}"/>
+                        <RadioButton Content="Repairments"
+                                     Height="10"
+                                     Foreground="White"
+                                     FontSize="3.25"
+                                     Style="{StaticResource MenuButtonStyle}"
+                                     Command="{Binding RepairmentsViewCommand}"/>
+                        <RadioButton Content="Reports"
+                                     Height="10"
+                                     Foreground="White"
+                                     FontSize="3.5"
+                                     Style="{StaticResource MenuButtonStyle}"
+                                     Command="{Binding ReportsViewCommand}"/>
+                    </StackPanel>
+
+
+                    <ContentControl Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="1"
+                                    Content="{Binding CurrentView}"
+                    />
+                </Grid>
+            </Viewbox>
         </Grid>
     </Border>
 </Window>

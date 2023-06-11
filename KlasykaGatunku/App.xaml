@@ -2,8 +2,32 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:KlasykaGatunku"
+             xmlns:viewModel="clr-namespace:KlasykaGatunku.MVVM.ViewModel"
+             xmlns:view="clr-namespace:KlasykaGatunku.MVVM.View"
              StartupUri="StartingWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/DefaultButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes/TopBarControlsButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes/MenuButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:CarsViewModel}">
+                <view:CarsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ClientsViewModel}">
+                <view:ClientsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RentalsViewModel}">
+                <view:RentalsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RepairmentsViewModel}">
+                <view:RepairmentsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ReportsViewModel}">
+                <view:ReportsView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
