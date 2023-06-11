@@ -8,11 +8,14 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Relase_Test|Any CPU = Relase_Test|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0FC5D3DF-1C52-4268-A793-070F63D72E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0FC5D3DF-1C52-4268-A793-070F63D72E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC5D3DF-1C52-4268-A793-070F63D72E4B}.Relase_Test|Any CPU.ActiveCfg = Relase_Test|Any CPU
+		{0FC5D3DF-1C52-4268-A793-070F63D72E4B}.Relase_Test|Any CPU.Build.0 = Relase_Test|Any CPU
 		{0FC5D3DF-1C52-4268-A793-070F63D72E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FC5D3DF-1C52-4268-A793-070F63D72E4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

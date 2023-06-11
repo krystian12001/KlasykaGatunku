@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\App.xaml
-10-1377246107
-21643148595
-23-997161915
+11-1505651957
+110252108
+24340016458
 131569487696
-MainWindow.xaml;MVVM\View\CarsView.xaml;MVVM\View\ClientsView.xaml;MVVM\View\RentalsView.xaml;MVVM\View\RepairmentsView.xaml;MVVM\View\ReportsView.xaml;StartingWindow.xaml;Themes\DefaultButtonStyle.xaml;Themes\MenuButtonStyle.xaml;Themes\TopBarControlsButtonStyle.xaml;
+MainWindow.xaml;MVVM\View\CarsView.xaml;MVVM\View\ClientsView.xaml;MVVM\View\RentalsView.xaml;MVVM\View\RepairmentsView.xaml;MVVM\View\ReportsView.xaml;StartingWindow.xaml;Themes\DefaultButtonStyle.xaml;Themes\DefaultLabelStyle.xaml;Themes\MenuButtonStyle.xaml;Themes\TopBarControlsButtonStyle.xaml;
 
-True
+False
 

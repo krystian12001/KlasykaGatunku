@@ -20,6 +20,9 @@ namespace KlasykaGatunku
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool isDragging;
+        private Point dragStartPosition;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,25 +30,40 @@ namespace KlasykaGatunku
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
-        }
-
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.Source is Grid topBarGrid && topBarGrid.Name == "TopBarGrid")
             {
                 DragMove();
             }
         }
 
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(this);
+                double deltaX = currentPosition.X - dragStartPosition.X;
+                double deltaY = currentPosition.Y - dragStartPosition.Y;
+
+                this.Left += deltaX;
+                this.Top += deltaY;
+            }
+        }
+
         private void MinimizeAppButton_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowState = WindowState.Minimized;
         }
 
         private void ShortenExpandAppButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (WindowState == WindowState.Normal)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+            }
         }
 
         private void CloseAppButton_Click(object sender, RoutedEventArgs e)

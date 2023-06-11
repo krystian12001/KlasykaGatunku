@@ -53,6 +53,8 @@ namespace KlasykaGatunku.MVVM.ViewModel
 
             ReportsVm = new ReportsViewModel();
 
+            CurrentView = CarsVm;
+
             CarsViewCommand = new RelayCommand(o =>
             {
                 CurrentView = CarsVm;

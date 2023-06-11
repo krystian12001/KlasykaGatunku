@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
-        Height="600" Width="920"
+        Height="600" Width="1020"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
@@ -19,66 +19,74 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
+
+    <Window.Resources>
+        <local:WindowStateToImageConverter x:Key="WindowStateToImageConverter"/>
+    </Window.Resources>
+
     <Border Background="#202540" CornerRadius="10">
         <Grid>
-            <Grid Background="#202540" Height="45" VerticalAlignment="Top" Margin="10,10,10,5">
+            <Grid x:Name="TopBarGrid" Background="#202540" Height="45" VerticalAlignment="Top" Margin="10,10,10,5">
                 <Image Source="pack://application:,,,/Img/logo_white.png" HorizontalAlignment="Left" Margin="0,0,0,0" />
                 <Button x:Name="MinimizeAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,80,0" Click="MinimizeAppButton_Click">
                     <Image Source="pack://application:,,,/Img/minimize_button.png" Margin="0,0,0,0" />
                 </Button>
-                <Button x:Name="ShortenExpandAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,40,0" Click="ShortenExpandAppButton_Click">
-                    <Image Source="pack://application:,,,/Img/shorten_window_button.png" Margin="0,0,0,0" />
-                </Button>
-                <Button x:Name="CloseAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,00,0" Click="CloseAppButton_Click">
+            <Button x:Name="ShortenExpandAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,40,0" Click="ShortenExpandAppButton_Click">
+                <Image>
+                    <Image.Source>
+                        <Binding Path="WindowState" RelativeSource="{RelativeSource AncestorType=Window}" Converter="{StaticResource WindowStateToImageConverter}"/>
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button x:Name="CloseAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,00,0" Click="CloseAppButton_Click">
                     <Image Source="pack://application:,,,/Img/close_button.png" Margin="0,0,0,0" />
                 </Button>
             </Grid>
-            <Viewbox Margin="5,55,5,5">
-                <Grid Width="115">
+            <Viewbox Margin="5,60,5,5">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition Height="68"/>
+                        <RowDefinition Height="560"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="22"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="750"/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Row="1">
                         <RadioButton Content="Cars"
-                                     Height="10"
-                                     Foreground="White"
-                                     FontSize="3.5"
-                                     Style="{StaticResource MenuButtonStyle}"
-                                     IsChecked="True"
-                                     Command="{Binding CarsViewCommand}"/>
+                                        Height="90"
+                                        Foreground="White"
+                                        FontSize="45"
+                                        Style="{StaticResource MenuButtonStyle}"
+                                        IsChecked="True"
+                                        Command="{Binding CarsViewCommand}"/>
                         <RadioButton Content="Clients"
-                                     Height="10"
-                                     Foreground="White"
-                                     FontSize="3.5"
-                                     Style="{StaticResource MenuButtonStyle}"
-                                     Command="{Binding ClientsViewCommand}"/>
+                                        Height="90"
+                                        Foreground="White"
+                                        FontSize="45"
+                                        Style="{StaticResource MenuButtonStyle}"
+                                        Command="{Binding ClientsViewCommand}"/>
                         <RadioButton Content="Rentals"
-                                     Height="10"
-                                     Foreground="White"
-                                     FontSize="3.5"
-                                     Style="{StaticResource MenuButtonStyle}"
-                                     Command="{Binding RentalsViewCommand}"/>
+                                        Height="90"
+                                        Foreground="White"
+                                        FontSize="45"
+                                        Style="{StaticResource MenuButtonStyle}"
+                                        Command="{Binding RentalsViewCommand}"/>
                         <RadioButton Content="Repairments"
-                                     Height="10"
-                                     Foreground="White"
-                                     FontSize="3.25"
-                                     Style="{StaticResource MenuButtonStyle}"
-                                     Command="{Binding RepairmentsViewCommand}"/>
+                                        Height="90"
+                                        Foreground="White"
+                                        FontSize="45"
+                                        Style="{StaticResource MenuButtonStyle}"
+                                        Command="{Binding RepairmentsViewCommand}"/>
                         <RadioButton Content="Reports"
-                                     Height="10"
-                                     Foreground="White"
-                                     FontSize="3.5"
-                                     Style="{StaticResource MenuButtonStyle}"
-                                     Command="{Binding ReportsViewCommand}"/>
+                                        Height="90"
+                                        Foreground="White"
+                                        FontSize="45"
+                                        Style="{StaticResource MenuButtonStyle}"
+                                        Command="{Binding ReportsViewCommand}"/>
                     </StackPanel>
 
 

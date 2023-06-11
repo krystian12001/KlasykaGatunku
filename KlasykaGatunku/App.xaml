@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Themes/DefaultButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/TopBarControlsButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/MenuButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes/DefaultLabelStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:CarsViewModel}">

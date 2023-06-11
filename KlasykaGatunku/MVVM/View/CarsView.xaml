@@ -6,7 +6,77 @@
              xmlns:local="clr-namespace:KlasykaGatunku.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Cars" Foreground="White" FontSize="20" HorizontalAlignment="left" Margin="0,0,0,20"/>
-    </StackPanel>
+    <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+        <DockPanel>
+            <Grid DockPanel.Dock="Top" Margin="0,0,0,0" VerticalAlignment="Top">
+                <!-- Add your top content here -->
+            </Grid>
+            <Grid x:Name="ElementsContainer" Margin="0,0,0,0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ItemsControl ItemsSource="{Binding Cars}" Grid.Column="0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <Image Source="pack://application:,,,/Img/das_auto.png" Height="300" Width="300" Margin="0,0,0,0"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <ItemsControl ItemsSource="{Binding Cars}" Grid.Column="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="White" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="160"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Vertical" Grid.Column="0">
+                                        <Label Content="Brand: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Model: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Type: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Fuel: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Color: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Production Year: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Mileage: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Availability: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Price Category: " Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Register Plate: " Style="{StaticResource DefaultLabelStyle}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <Label Content="{Binding Brand}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Model}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Type}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Fuel}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Color}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding ProductionYear}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Mileage}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Availability}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding PriceCategorySign}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding RegisterPlate}" Style="{StaticResource DefaultLabelStyle}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                                        <Label Content="{Binding Brand}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Model}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Type}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Fuel}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Color}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding ProductionYear}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Mileage}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Availability}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding PriceCategory}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding RegisterPlate}" Style="{StaticResource DefaultLabelStyle}" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
 </UserControl>
