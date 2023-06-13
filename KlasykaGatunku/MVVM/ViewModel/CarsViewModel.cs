@@ -1,13 +1,18 @@
-﻿using System;
+﻿using KlasykaGatunku.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Windows;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace KlasykaGatunku.MVVM.ViewModel
 {
-    public class Car
+    public class Car : ObservableObject
     {
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -22,9 +27,22 @@ namespace KlasykaGatunku.MVVM.ViewModel
         public int PriceCategory { get; set; }
         public string PriceCategorySign { get; set; }
         public string RegisterPlate { get; set; }
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                if (isSelected != value)
+                {
+                    isSelected = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
     }
 
-    class CarsViewModel
+    class CarsViewModel : ObservableObject 
     {
         public ObservableCollection<Car> Cars { get; set; }
 
@@ -35,6 +53,90 @@ namespace KlasykaGatunku.MVVM.ViewModel
         public CarsViewModel()
         {
             LoadCarsDB();
+        }
+
+        private ICommand _searchIconClickCommand;
+        public ICommand SearchIconClickCommand
+        {
+            get
+            {
+                return _searchIconClickCommand ?? (_searchIconClickCommand = new RelayCommand(Search, (parameter) => true));
+            }
+        }
+
+        private ICommand _addIconClickCommand;
+        public ICommand AddIconClickCommand
+        {
+            get
+            {
+                return _addIconClickCommand ?? (_addIconClickCommand = new RelayCommand(Add, (parameter) => true));
+            }
+        }
+
+        private ICommand _trashIconClickCommand;
+        public ICommand TrashIconClickCommand
+        {
+            get
+            {
+                return _trashIconClickCommand ?? (_trashIconClickCommand = new RelayCommand(Remove, (parameter) => true));
+            }
+        }
+
+        private ICommand _selectAllIconClickCommand;
+        public ICommand SelectAllIconClickCommand
+        {
+            get
+            {
+                return _selectAllIconClickCommand ?? (_selectAllIconClickCommand = new RelayCommand(SelectAll, (parameter) => true));
+            }
+        }
+
+        public void Search(object parameter)
+        {
+            MessageBox.Show("Your message here", "Title of the message box", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        public void Remove(object parameter)
+        {
+            MessageBox.Show("Your message here", "Title of the message box", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        public void Add(object parameter)
+        {
+            MessageBox.Show("Your message here", "Title of the message box", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        public void SelectAll(object parameter)
+        {
+            bool allSelected = true;
+            foreach (Car car in Cars)
+            {
+                if (!car.IsSelected)
+                {
+                    allSelected = false;
+                    break;
+                }
+            }
+
+            if (allSelected)
+            {
+                foreach (Car car in Cars)
+                {
+                    car.IsSelected = false;
+                }
+            }
+            else
+            {
+                foreach (Car car in Cars)
+                {
+                    car.IsSelected = true;
+                }
+            }
+
+            OnPropertyChanged(nameof(Cars));
         }
 
         private void LoadCarsDB()
@@ -48,7 +150,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
                     System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(query, connection);
 
                     connection.Open();
-                
+
                     using (System.Data.OleDb.OleDbDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -78,8 +180,9 @@ namespace KlasykaGatunku.MVVM.ViewModel
                                 Availability = carAvailability ? "Available" : "Unavailable",
                                 ImagePath = carImagePath,
                                 PriceCategory = carPriceCategory,
-                                PriceCategorySign = (carPriceCategory==0)? "☆☆☆☆☆" : (carPriceCategory == 1) ? "★☆☆☆☆" : (carPriceCategory == 2) ? "★★☆☆☆" : (carPriceCategory == 3) ? "★★★☆☆" : (carPriceCategory == 4) ? "★★★★☆" : "★★★★★" ,
-                                RegisterPlate = carRegisterPlate
+                                PriceCategorySign = (carPriceCategory == 0) ? "☆☆☆☆☆" : (carPriceCategory == 1) ? "★☆☆☆☆" : (carPriceCategory == 2) ? "★★☆☆☆" : (carPriceCategory == 3) ? "★★★☆☆" : (carPriceCategory == 4) ? "★★★★☆" : "★★★★★",
+                                RegisterPlate = carRegisterPlate,
+                                IsSelected = false // Set initial value to false
                             };
 
                             Cars.Add(car);
@@ -94,4 +197,5 @@ namespace KlasykaGatunku.MVVM.ViewModel
             }
         }
     }
+
 }

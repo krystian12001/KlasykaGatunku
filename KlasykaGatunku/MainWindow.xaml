@@ -26,21 +26,23 @@
 
     <Border Background="#202540" CornerRadius="10">
         <Grid>
-            <Grid x:Name="TopBarGrid" Background="#202540" Height="45" VerticalAlignment="Top" Margin="10,10,10,5">
-                <Image Source="pack://application:,,,/Img/logo_white.png" HorizontalAlignment="Left" Margin="0,0,0,0" />
-                <Button x:Name="MinimizeAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,80,0" Click="MinimizeAppButton_Click">
-                    <Image Source="pack://application:,,,/Img/minimize_button.png" Margin="0,0,0,0" />
-                </Button>
-            <Button x:Name="ShortenExpandAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,40,0" Click="ShortenExpandAppButton_Click">
-                <Image>
-                    <Image.Source>
-                        <Binding Path="WindowState" RelativeSource="{RelativeSource AncestorType=Window}" Converter="{StaticResource WindowStateToImageConverter}"/>
-                    </Image.Source>
-                </Image>
-            </Button>
-            <Button x:Name="CloseAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,00,0" Click="CloseAppButton_Click">
-                    <Image Source="pack://application:,,,/Img/close_button.png" Margin="0,0,0,0" />
-                </Button>
+            <Grid x:Name="TopBarGrid" Background="#202540" Height="60" VerticalAlignment="Top" Margin="8,0,8,0">
+                <Grid Height="45" Margin="10,10,10,5">
+                    <Image Source="pack://application:,,,/Img/logo_white.png" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                    <Button x:Name="MinimizeAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,80,0" Click="MinimizeAppButton_Click">
+                        <Image Source="pack://application:,,,/Img/minimize_button.png" Margin="0,0,0,0" />
+                    </Button>
+                    <Button x:Name="ShortenExpandAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,40,0" Click="ShortenExpandAppButton_Click">
+                        <Image>
+                            <Image.Source>
+                                <Binding Path="WindowState" RelativeSource="{RelativeSource AncestorType=Window}" Converter="{StaticResource WindowStateToImageConverter}"/>
+                            </Image.Source>
+                        </Image>
+                    </Button>
+                    <Button x:Name="CloseAppButton" Style="{StaticResource HoverTopBarControlsButtonStyle}" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,00,0" Click="CloseAppButton_Click">
+                            <Image Source="pack://application:,,,/Img/close_button.png" Margin="0,0,0,0" />
+                    </Button>
+                </Grid>
             </Grid>
             <Viewbox Margin="5,60,5,5">
                 <Grid>

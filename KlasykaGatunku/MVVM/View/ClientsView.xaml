@@ -4,9 +4,74 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KlasykaGatunku.MVVM.View"
+             xmlns:converters="clr-namespace:KlasykaGatunku.MVVM.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Clients" Foreground="White" FontSize="20" HorizontalAlignment="left" Margin="0,0,0,20"/>
-    </StackPanel>
+
+    <UserControl.Resources>
+        <converters:BorderBrushConverter x:Key="BorderBrushConverter" />
+    </UserControl.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,0" VerticalAlignment="Top">
+            <TextBox Width="300" 
+                     Height="40" 
+                     VerticalContentAlignment="Center" 
+                     HorizontalAlignment="left" 
+                     Margin="5" 
+                     Style="{StaticResource SearchBox}"
+            />
+            <Button Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                    Width="30"
+                    Height="30"
+                    HorizontalAlignment="Left"
+                    Margin="270,0,5,0"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Command="{Binding SearchIconClickCommand}"
+            >
+                <Image Source="pack://application:,,,/Img/search_icon_white.png" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </Grid>
+        <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+            <Grid x:Name="ElementsContainer" Margin="0,0,0,0" HorizontalAlignment="Stretch">
+                <ItemsControl ItemsSource="{Binding Customers}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="{Binding IsSelected, Converter={StaticResource BorderBrushConverter}}" BorderThickness="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="300"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Vertical" Grid.Column="0">
+                                        <Label Content="Name: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Surname: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Phone Number: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="E-mail: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Regular Customer: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <Label Content="{Binding Name}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Surname}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding PhoneNumber}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Email}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding RegularCustomer}" Style="{StaticResource DefaultLabelStyle}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                                        <ToggleButton Height="20" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                            <!-- ... button content ... -->
+                                        </ToggleButton>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>
+

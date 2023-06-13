@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\BorderBrushConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MVVM\ViewModel\CarsViewModel.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="MVVM\View\ReportsView.xaml.cs">
       <DependentUpon>ReportsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SearchBar.cs" />
     <Compile Include="StartingWindow.xaml.cs">
       <DependentUpon>StartingWindow.xaml</DependentUpon>
     </Compile>
@@ -140,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\SearchBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\TopBarControlsButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,10 +177,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="MVVM\Model\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Img\search_icon.png" />
+    <Resource Include="Img\search_icon_white.png" />
+    <Resource Include="Img\add_icon.png" />
+    <Resource Include="Img\sellect_all_icon.png" />
+    <Resource Include="Img\sellect_all_icon_white.png" />
+    <Resource Include="Img\trash_icon.png" />
+    <Resource Include="Img\trash_icon_white.png" />
+    <Resource Include="Img\add_icon_white.png" />
     <Content Include="KlasykaGatunku.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

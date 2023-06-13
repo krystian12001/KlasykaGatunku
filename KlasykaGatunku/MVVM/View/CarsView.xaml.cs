@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KlasykaGatunku.MVVM.ViewModel;
 
 namespace KlasykaGatunku.MVVM.View
 {
@@ -25,6 +26,9 @@ namespace KlasykaGatunku.MVVM.View
         public CarsView()
         {
             InitializeComponent();
+
+            CarsViewModel carsViewModel = new CarsViewModel();
+            DataContext = carsViewModel;
         }
 
         private void LineUpButton_Click(object sender, RoutedEventArgs e)

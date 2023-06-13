@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace KlasykaGatunku.Core
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _execute;
 

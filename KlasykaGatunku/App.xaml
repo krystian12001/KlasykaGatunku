@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:KlasykaGatunku"
              xmlns:viewModel="clr-namespace:KlasykaGatunku.MVVM.ViewModel"
              xmlns:view="clr-namespace:KlasykaGatunku.MVVM.View"
-             StartupUri="StartingWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Themes/TopBarControlsButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/MenuButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/DefaultLabelStyle.xaml"/>
+                <ResourceDictionary Source="Themes/SearchBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:CarsViewModel}">
