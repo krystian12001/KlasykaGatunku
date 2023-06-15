@@ -20,7 +20,7 @@
             <Image Source="pack://application:,,,/Img/logo_white.png" Margin="10,20,10,280" />
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" FontSize="20" FontWeight="Bold" Foreground="White">Authors:</TextBlock>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" FontSize="16" FontWeight="Light" Foreground="White">Krystian Zabawski</TextBlock>
-            <Button x:Name="CloseAppButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xEB96;" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="100"  FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="CloseAppButton_Click" />
+            <Button x:Name="CloseAppButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xEB96;" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="100" FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="CloseAppButton_Click" />
             <Button x:Name="NextScreenButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xE761;" Margin="10,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="50" Width="100" FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="NextScreenButton_Click" />
         </Grid>
     </Border>

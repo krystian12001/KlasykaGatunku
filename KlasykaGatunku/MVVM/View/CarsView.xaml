@@ -20,8 +20,31 @@
                      VerticalContentAlignment="Center" 
                      HorizontalAlignment="left" 
                      Margin="5" 
-                     Style="{StaticResource SearchBox}"
-            />
+                     Padding="5"
+                     Foreground="White"
+                     Background="#CFCFCF"
+                     Text="{Binding FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            >
+                <TextBox.Template>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border Background="#353340"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter TargetName="PART_ContentHost" Property="Focusable" Value="True" />
+                                <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Self}}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Template>
+                <TextBox.CaretBrush>
+                    <SolidColorBrush Color="White"/>
+                </TextBox.CaretBrush>
+            </TextBox>
             <Button Style="{StaticResource HoverTopBarControlsButtonStyle}"
                     Width="30"
                     Height="30"
@@ -32,6 +55,17 @@
                     Command="{Binding SearchIconClickCommand}"
             >
                 <Image Source="pack://application:,,,/Img/search_icon_white.png" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button Style="{StaticResource HoverTopBarControlsButtonStyle}" 
+                    Width="40"
+                    Height="40"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,145,0"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Command="{Binding EditIconClickCommand}"
+            >
+                <Image Source="pack://application:,,,/Img/edit_icon_white.png" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
             <Button Style="{StaticResource HoverTopBarControlsButtonStyle}"
                     Width="40"
@@ -68,12 +102,12 @@
             </Button>
         </Grid>
         <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
-            <Grid x:Name="ElementsContainer" Margin="0,0,0,0" HorizontalAlignment="Stretch">
+            <Grid x:Name="ElementsContainer" Margin="3,0,3,0" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ItemsControl ItemsSource="{Binding Cars}" Grid.Column="0">
+                <!--<ItemsControl ItemsSource="{Binding Cars, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="{Binding IsSelected, Converter={StaticResource BorderBrushConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="3">
@@ -81,8 +115,8 @@
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                <ItemsControl ItemsSource="{Binding Cars}" Grid.Column="1">
+                </ItemsControl>-->
+                <ItemsControl ItemsSource="{Binding Cars , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="{Binding IsSelected, Converter={StaticResource BorderBrushConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="3">
@@ -116,11 +150,17 @@
                                         <Label Content="{Binding PriceCategorySign}" Style="{StaticResource DefaultLabelStyle}" />
                                         <Label Content="{Binding RegisterPlate}" Style="{StaticResource DefaultLabelStyle}" />
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical" Grid.Column="2">
-                                        <ToggleButton Height="20" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                            <!-- ... button content ... -->
+                                    <StackPanel Orientation="Vertical" Grid.Column="2" Margin="5">
+                                        <ToggleButton Height="40"
+                                                      Width="80"
+                                                      IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                      Style="{StaticResource HoverToggleButtonStyle}" 
+                                        >
+                                            Select
                                         </ToggleButton>
+                                        
                                     </StackPanel>
+                                    
                                 </Grid>
                             </Border>
                         </DataTemplate>

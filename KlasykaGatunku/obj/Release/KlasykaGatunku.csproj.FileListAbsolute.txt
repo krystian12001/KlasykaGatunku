@@ -32,3 +32,15 @@ C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Releas
 C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\KlasykaGatunku.csproj.CoreCompileInputs.cache
 C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\KlasykaGatunku.exe
 C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\KlasykaGatunku.pdb
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\Themes\SearchBoxStyle.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\AddCarWindow.g.cs
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\AddCarWindow.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\Themes\LargeCheckBoxStyle.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\Themes\DefaultInputStyle.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\Themes\ToggleButtonStyle.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\CustomMessageBoxOk.g.cs
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\CustomMessageBoxYesNo.g.cs
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\EditCarWindow.g.cs
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\CustomMessageBoxOk.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\CustomMessageBoxYesNo.baml
+C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\obj\Release\EditCarWindow.baml

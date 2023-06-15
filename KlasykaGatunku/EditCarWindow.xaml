@@ -1,0 +1,140 @@
+﻿<Window x:Class="KlasykaGatunku.EditCarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KlasykaGatunku"
+        mc:Ignorable="d"
+        Title="AddCarWindow" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="400" Width="300"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+>
+    <Border BorderBrush="white" BorderThickness="1" Background="#202540" CornerRadius="10">
+        <Grid>
+            <Label Content="Insert car data" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="20" Height="auto" Style="{StaticResource DefaultLabelStyle}" />
+            <Grid Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <Label Content="Brand: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Model: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Type: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Fuel: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Color: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Production Year: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Mileage: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Availability: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Price Category: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Register Plate: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Button x:Name="backButton"
+                            Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                            Width="80"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Margin="20,10,0,0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Command="{Binding SelectAllIconClickCommand}"
+                            FontFamily="Segoe MDL2 Assets"  
+                            FontSize="30" 
+                            FontWeight="Bold"
+                            Content="&#xEB96;"
+                            Click="backButton_Click"
+                    />
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <TextBox x:Name="brandTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="brandTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <TextBox x:Name="modelTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="modelTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <ComboBox x:Name="typeComboBox" Margin="2" Width="140" Height="26">
+                        <ComboBoxItem Content="Baquet" />
+                        <ComboBoxItem Content="Barchetta" />
+                        <ComboBoxItem Content="Berlinetta" />
+                        <ComboBoxItem Content="Buggy" />
+                        <ComboBoxItem Content="Cabrio" />
+                        <ComboBoxItem Content="Combi" />
+                        <ComboBoxItem Content="Coupe" />
+                        <ComboBoxItem Content="Hatchback" />
+                        <ComboBoxItem Content="Landaulet" />
+                        <ComboBoxItem Content="Limousine" />
+                        <ComboBoxItem Content="Muscle" />
+                        <ComboBoxItem Content="Pickup" />
+                        <ComboBoxItem Content="Phateon" />
+                        <ComboBoxItem Content="Runabout" />
+                        <ComboBoxItem Content="Sedan" />
+                        <ComboBoxItem Content="Targa" />
+                        <ComboBoxItem Content="Torpedo" />
+                        <ComboBoxItem Content="Truck" />
+                        <ComboBoxItem Content="Turing" />
+                        <ComboBoxItem Content="Van" />
+                    </ComboBox>
+                    <ComboBox x:Name="fuelComboBox" Margin="2" Width="140" Height="26">
+                        <ComboBoxItem Content="Gas" />
+                        <ComboBoxItem Content="Diesel" />
+                        <ComboBoxItem Content="Gas + LPG" />
+                        <ComboBoxItem Content="Hybrid" />
+                        <ComboBoxItem Content="Electric" />
+                    </ComboBox>
+                    <ComboBox x:Name="colorComboBox" Width="140" Margin="2" Height="26">
+                        <ComboBoxItem Content="Aquamarine" />
+                        <ComboBoxItem Content="Azure" />
+                        <ComboBoxItem Content="Beige" />
+                        <ComboBoxItem Content="Black" />
+                        <ComboBoxItem Content="Blue" />
+                        <ComboBoxItem Content="Brown" />
+                        <ComboBoxItem Content="Crimson" />
+                        <ComboBoxItem Content="Cyan" />
+                        <ComboBoxItem Content="Fuchsia" />
+                        <ComboBoxItem Content="Gold" />
+                        <ComboBoxItem Content="Green" />
+                        <ComboBoxItem Content="Grey" />
+                        <ComboBoxItem Content="Indigo" />
+                        <ComboBoxItem Content="Lavender" />
+                        <ComboBoxItem Content="Lime" />
+                        <ComboBoxItem Content="Maroon" />
+                        <ComboBoxItem Content="Magenta" />
+                        <ComboBoxItem Content="Orange" />
+                        <ComboBoxItem Content="Perl" />
+                        <ComboBoxItem Content="Pink" />
+                        <ComboBoxItem Content="Purple" />
+                        <ComboBoxItem Content="Red" />
+                        <ComboBoxItem Content="Silver" />
+                        <ComboBoxItem Content="Teal" />
+                        <ComboBoxItem Content="White" />
+                        <ComboBoxItem Content="Yellow" />
+                    </ComboBox>
+                    <TextBox x:Name="productionYearTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="productionYearTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <TextBox x:Name="mileageTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="mileageTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <CheckBox x:Name="availabilityCheckBox" Margin="2" Height="26" Width="140" Style="{StaticResource LargeCheckBoxStyle}" />
+                    <ComboBox x:Name="priceCategoryComboBox" Margin="2" Width="140" Height="26">
+                        <ComboBoxItem Content="★☆☆☆☆" />
+                        <ComboBoxItem Content="★★☆☆☆" />
+                        <ComboBoxItem Content="★★★☆☆" />
+                        <ComboBoxItem Content="★★★★☆" />
+                        <ComboBoxItem Content="★★★★★" />
+                    </ComboBox>
+                    <TextBox x:Name="registerplateTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="registerPlateTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <Button x:Name="addButton"
+                            Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                            Width="80"
+                            Height="40"
+                            HorizontalAlignment="Right"
+                            Margin="0,10,5,0"
+                            Background="Transparent"
+                            BorderBrush="Transparent" 
+                            Command="{Binding SelectAllIconClickCommand}"
+                            Click="addButton_Click"
+                    >
+                        <Image Source="pack://application:,,,/Img/edit_icon_white.png" Height="33" Width="33" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

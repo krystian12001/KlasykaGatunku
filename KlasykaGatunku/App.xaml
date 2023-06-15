@@ -13,6 +13,9 @@
                 <ResourceDictionary Source="Themes/MenuButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/DefaultLabelStyle.xaml"/>
                 <ResourceDictionary Source="Themes/SearchBoxStyle.xaml"/>
+                <ResourceDictionary Source="Themes/LargeCheckBoxStyle.xaml"/>
+                <ResourceDictionary Source="Themes/DefaultInputStyle.xaml"/>
+                <ResourceDictionary Source="Themes/ToggleButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:CarsViewModel}">

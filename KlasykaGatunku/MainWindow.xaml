@@ -14,6 +14,7 @@
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         MouseMove="Window_MouseMove"
+        Icon="Img/icon.ico"
 >
 
     <Window.DataContext>
