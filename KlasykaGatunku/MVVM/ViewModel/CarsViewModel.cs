@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using KlasykaGatunku.WindowsApp;
 
 namespace KlasykaGatunku.MVVM.ViewModel
 {

@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\App.xaml
-19-1540769072
+23-1659385900
 110252108
-26-1693905827
+29747295921
 131569487696
-AddCarWindow.xaml;CustomMessageBoxOk.xaml;CustomMessageBoxYesNo.xaml;EditCarWindow.xaml;MainWindow.xaml;MVVM\View\CarsView.xaml;MVVM\View\ClientsView.xaml;MVVM\View\RentalsView.xaml;MVVM\View\RepairmentsView.xaml;MVVM\View\ReportsView.xaml;StartingWindow.xaml;Themes\DefaultButtonStyle.xaml;Themes\DefaultInputStyle.xaml;Themes\DefaultLabelStyle.xaml;Themes\LargeCheckBoxStyle.xaml;Themes\MenuButtonStyle.xaml;Themes\SearchBoxStyle.xaml;Themes\ToggleButtonStyle.xaml;Themes\TopBarControlsButtonStyle.xaml;
+WindowsApp\AddCarWindow.xaml;WindowsApp\AddCustomerWindow.xaml;WindowsApp\AddRentalWindow.xaml;WindowsApp\AddRepairmentWindow.xaml;WindowsApp\CustomMessageBoxOk.xaml;WindowsApp\CustomMessageBoxYesNo.xaml;WindowsApp\EditCarWindow.xaml;WindowsApp\EditCustomerWindow.xaml;WindowsApp\MainWindow.xaml;MVVM\View\CarsView.xaml;MVVM\View\ClientsView.xaml;MVVM\View\RentalsView.xaml;MVVM\View\RepairmentsView.xaml;MVVM\View\ReportsView.xaml;WindowsApp\StartingWindow.xaml;Themes\DefaultButtonStyle.xaml;Themes\DefaultInputStyle.xaml;Themes\DefaultLabelStyle.xaml;Themes\LargeCheckBoxStyle.xaml;Themes\MenuButtonStyle.xaml;Themes\SearchBoxStyle.xaml;Themes\ToggleButtonStyle.xaml;Themes\TopBarControlsButtonStyle.xaml;
 
 False
 

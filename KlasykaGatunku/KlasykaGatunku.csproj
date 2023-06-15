@@ -68,31 +68,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddCarWindow.xaml.cs">
+    <Compile Include="WindowsApp\AddCarWindow.xaml.cs">
       <DependentUpon>AddCarWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddCustomerWindow.xaml.cs">
+    <Compile Include="WindowsApp\AddCustomerWindow.xaml.cs">
       <DependentUpon>AddCustomerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddRentalWindow.xaml.cs">
+    <Compile Include="WindowsApp\AddRentalWindow.xaml.cs">
       <DependentUpon>AddRentalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddRepairmentWindow.xaml.cs">
+    <Compile Include="WindowsApp\AddRepairmentWindow.xaml.cs">
       <DependentUpon>AddRepairmentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomMessageBoxOk.xaml.cs">
+    <Compile Include="WindowsApp\CustomMessageBoxOk.xaml.cs">
       <DependentUpon>CustomMessageBoxOk.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomMessageBoxYesNo.xaml.cs">
+    <Compile Include="WindowsApp\CustomMessageBoxYesNo.xaml.cs">
       <DependentUpon>CustomMessageBoxYesNo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditCarWindow.xaml.cs">
+    <Compile Include="WindowsApp\EditCarWindow.xaml.cs">
       <DependentUpon>EditCarWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditCustomerWindow.xaml.cs">
+    <Compile Include="WindowsApp\EditCustomerWindow.xaml.cs">
       <DependentUpon>EditCustomerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\BorderBrushConverter.cs" />
+    <Compile Include="Utils\BorderBrushConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MVVM\ViewModel\CarsViewModel.cs" />
@@ -116,43 +116,43 @@
     <Compile Include="MVVM\View\ReportsView.xaml.cs">
       <DependentUpon>ReportsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartingWindow.xaml.cs">
+    <Compile Include="WindowsApp\StartingWindow.xaml.cs">
       <DependentUpon>StartingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowStateToImageConverter.cs" />
-    <Page Include="AddCarWindow.xaml">
+    <Compile Include="Utils\WindowStateToImageConverter.cs" />
+    <Page Include="WindowsApp\AddCarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddCustomerWindow.xaml">
+    <Page Include="WindowsApp\AddCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddRentalWindow.xaml">
+    <Page Include="WindowsApp\AddRentalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddRepairmentWindow.xaml">
+    <Page Include="WindowsApp\AddRepairmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomMessageBoxOk.xaml">
+    <Page Include="WindowsApp\CustomMessageBoxOk.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomMessageBoxYesNo.xaml">
+    <Page Include="WindowsApp\CustomMessageBoxYesNo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditCarWindow.xaml">
+    <Page Include="WindowsApp\EditCarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditCustomerWindow.xaml">
+    <Page Include="WindowsApp\EditCustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="WindowsApp\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -160,7 +160,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="WindowsApp\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -184,7 +184,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StartingWindow.xaml">
+    <Page Include="WindowsApp\StartingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

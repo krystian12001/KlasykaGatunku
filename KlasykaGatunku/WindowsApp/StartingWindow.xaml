@@ -1,0 +1,27 @@
+﻿<Window x:Class="KlasykaGatunku.WindowsApp.StartingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KlasykaGatunku"
+        mc:Ignorable="d"
+        Title="StartingWindow" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="400" Width="400"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseMove="Window_MouseMove"
+>
+    <Border Background="#202540" CornerRadius="10">
+        <Grid>
+            <Image Source="pack://application:,,,/Img/logo_white.png" Margin="10,20,10,280" />
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" FontSize="20" FontWeight="Bold" Foreground="White">Authors:</TextBlock>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" FontSize="16" FontWeight="Light" Foreground="White">Krystian Zabawski</TextBlock>
+            <Button x:Name="CloseAppButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xEB96;" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="100" FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="CloseAppButton_Click" />
+            <Button x:Name="NextScreenButton" Style="{StaticResource HoverDefaultButtonStyle}" Content="&#xE761;" Margin="10,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="50" Width="100" FontFamily="Segoe MDL2 Assets"  FontSize="40" FontWeight="Bold" Click="NextScreenButton_Click" />
+        </Grid>
+    </Border>
+</Window>

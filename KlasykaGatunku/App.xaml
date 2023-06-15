@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:KlasykaGatunku"
              xmlns:viewModel="clr-namespace:KlasykaGatunku.MVVM.ViewModel"
              xmlns:view="clr-namespace:KlasykaGatunku.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             StartupUri="WindowsApp/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
