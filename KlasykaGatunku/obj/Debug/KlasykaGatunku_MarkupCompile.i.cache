@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\kryst\OneDrive\Pulpit\Projekty\KlasykaGatunku\KlasykaGatunku\App.xaml
-23-1659385900
+271859158570
 110252108
-33-389900476
-131569487696
-WindowsApp\AddCarWindow.xaml;WindowsApp\AddCustomerWindow.xaml;WindowsApp\AddRentalWindow.xaml;WindowsApp\AddRepairmentWindow.xaml;WindowsApp\CustomMessageBoxOk.xaml;WindowsApp\CustomMessageBoxYesNo.xaml;WindowsApp\EditCarWindow.xaml;WindowsApp\EditCustomerWindow.xaml;WindowsApp\MainWindow.xaml;MVVM\View\CarsView.xaml;MVVM\View\ClientsView.xaml;MVVM\View\RentalsView.xaml;MVVM\View\RepairmentsView.xaml;MVVM\View\ReportsView.xaml;WindowsApp\StartingWindow.xaml;Themes\DefaultButtonStyle.xaml;Themes\DefaultInputStyle.xaml;Themes\DefaultLabelStyle.xaml;Themes\LargeCheckBoxStyle.xaml;Themes\MenuButtonStyle.xaml;Themes\SearchBoxStyle.xaml;Themes\ToggleButtonStyle.xaml;Themes\TopBarControlsButtonStyle.xaml;
+401584711082
+14760096816
+WindowsApp\AddCarWindow.xaml;WindowsApp\AddCustomerWindow.xaml;WindowsApp\AddRentalWindow.xaml;WindowsApp\AddRepairmentWindow.xaml;WindowsApp\CustomMessageBoxOk.xaml;WindowsApp\CustomMessageBoxYesNo.xaml;WindowsApp\EditRepairmentWindow.xaml;WindowsApp\EditRentalWindow.xaml;WindowsApp\EditCarWindow.xaml;WindowsApp\EditCustomerWindow.xaml;WindowsApp\EditSinglePropertyWindow.xaml;WindowsApp\MainWindow.xaml;MVVM\View\CarsView.xaml;MVVM\View\ClientsView.xaml;MVVM\View\RentalsView.xaml;MVVM\View\RepairmentsView.xaml;MVVM\View\ReportsView.xaml;WindowsApp\QuickAddRepairmentWindow.xaml;WindowsApp\StartingWindow.xaml;Themes\DefaultButtonStyle.xaml;Themes\DefaultInputStyle.xaml;Themes\DefaultLabelStyle.xaml;Themes\LargeCheckBoxStyle.xaml;Themes\MenuButtonStyle.xaml;Themes\SearchBoxStyle.xaml;Themes\ToggleButtonStyle.xaml;Themes\TopBarControlsButtonStyle.xaml;
 
-False
+True
 

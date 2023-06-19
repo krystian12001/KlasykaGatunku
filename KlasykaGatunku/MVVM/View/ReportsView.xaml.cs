@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,28 @@ namespace KlasykaGatunku.MVVM.View
         public ReportsView()
         {
             InitializeComponent();
+        }
+
+        private void DateTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            if (!Regex.IsMatch(textBox.Text, "^[0-9/]*$"))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!int.TryParse(e.Text, out _) && e.Text != "/")
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (textBox.Text.Length > 10)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

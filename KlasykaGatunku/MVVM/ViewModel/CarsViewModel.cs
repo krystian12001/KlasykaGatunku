@@ -1,5 +1,4 @@
-﻿using KlasykaGatunku.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +8,9 @@ using System.Windows.Input;
 using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using KlasykaGatunku.Core;
 using KlasykaGatunku.WindowsApp;
+using KlasykaGatunku.Utils;
 
 namespace KlasykaGatunku.MVVM.ViewModel
 {
@@ -106,9 +107,11 @@ namespace KlasykaGatunku.MVVM.ViewModel
                     return "★★★★★";
             }
         }
+
+        public string DisplayName => $"{Brand} {Model} ({RegisterPlate})";
     }
 
-    class CarsViewModel : ObservableObject
+    public class CarsViewModel : ObservableObject
     {
         private ObservableCollection<Car> cars;
 
@@ -147,10 +150,6 @@ namespace KlasykaGatunku.MVVM.ViewModel
         }
 
         //======//
-
-        static string databaseFileName = "KlasykaGatunku.accdb";
-        static string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, databaseFileName);
-        static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + absolutePath + ";";
 
         public CarsViewModel()
         {
@@ -295,8 +294,11 @@ namespace KlasykaGatunku.MVVM.ViewModel
                 }
             }
 
-            if (id <= 0)
+            if (id <= 0 && selectedCount > 0)
             {
+                CustomMessageBoxOk messageBoxNoneSelected = new CustomMessageBoxOk();
+                messageBoxNoneSelected.Message = "Fatal error! Index out of range, contact software provider";
+                bool? result = messageBoxNoneSelected.ShowDialog();
                 return;
             }
 
@@ -336,28 +338,50 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             if (InsertCarDB(car))
             {
-                Cars.Add(car);
+                Cars.Clear();
+                LoadCarsDB();
             }
         }
 
         public void RemoveCars()
         {
-            CustomMessageBoxYesNo messageBox = new CustomMessageBoxYesNo();
-            messageBox.Message = "Are you sure?";
+            bool anySelected = false;
 
-            bool? result = messageBox.ShowDialog();
-            if (result.HasValue && result.Value)
+            foreach (Car car in Cars)
             {
-                if (RemoveSelectedCars())
+                anySelected = car.IsSelected;
+                if (anySelected)
                 {
-                    List<Car> storedCars = new List<Car>(Cars);
-                    Cars.Clear();
-                    foreach (Car car in storedCars)
-                    {
-                        Cars.Add(car);
-                    }
-                    OnPropertyChanged(nameof(Cars));
+                    break;
                 }
+            }
+
+            if (anySelected)
+            {
+                CustomMessageBoxYesNo messageBox = new CustomMessageBoxYesNo();
+                messageBox.Message = "Are you sure?";
+
+                bool? result = messageBox.ShowDialog();
+                if (result.HasValue && result.Value)
+                {
+                    if (RemoveSelectedCars())
+                    {
+                        List<Car> storedCars = new List<Car>(Cars);
+                        Cars.Clear();
+                        foreach (Car car in storedCars)
+                        {
+                            Cars.Add(car);
+                        }
+                        OnPropertyChanged(nameof(Cars));
+                    }
+                }
+            }
+            else
+            {
+                CustomMessageBoxOk messageBox = new CustomMessageBoxOk();
+                messageBox.Message = "Select a car to delete";
+
+                bool? result = messageBox.ShowDialog();
             }
         }
 
@@ -368,7 +392,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
             Cars = new ObservableCollection<Car>();
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     string query = "SELECT * FROM Cars";
                     System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(query, connection);
@@ -410,7 +434,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     string query = "INSERT INTO Cars (Brand, Model, Type, Fuel, Color, [Production Year], Mileage, Avaliable, [Image Path], [Price Category], [Register Plate]) " +
                                    "VALUES (@Brand, @Model, @Type, @Fuel, @Color, @ProductionYear, @Mileage, @Avaliable, @ImagePath, @PriceCategory, @RegisterPlate)";
@@ -450,7 +474,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     List<Car> selectedCars = new List<Car>();
                     
@@ -464,6 +488,8 @@ namespace KlasykaGatunku.MVVM.ViewModel
                             System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(query, connection);
                             command.Parameters.AddWithValue("@CarId", car.IdDB);
                             command.ExecuteNonQuery();
+                            ValuesHelper.RemoveRentalsByCarId(car.IdDB);
+                            ValuesHelper.RemoveRepairmentsByCarId(car.IdDB);
                             selectedCars.Add(car);
                         }
                     }
@@ -487,7 +513,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     string query = "UPDATE Cars SET Brand = @Brand, Model = @Model, Type = @Type, Fuel = @Fuel, Color = @Color, " +
                                    "[Production Year] = @ProductionYear, Mileage = @Mileage, Avaliable = @Avaliable, " +

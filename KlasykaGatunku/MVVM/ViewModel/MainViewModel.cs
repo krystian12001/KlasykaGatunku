@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KlasykaGatunku.MVVM.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         public CarsViewModel CarsVm { get; set; }
 
@@ -51,7 +51,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
 
             RepairmentsVm = new RepairmentsViewModel();
 
-            ReportsVm = new ReportsViewModel();
+            ReportsVm = new ReportsViewModel(this);
 
             CurrentView = CarsVm;
 
@@ -67,16 +67,19 @@ namespace KlasykaGatunku.MVVM.ViewModel
 
             RentalsViewCommand = new RelayCommand(o =>
             {
+                RentalsVm.LoadRentalsDB();
                 CurrentView = RentalsVm;
             });
 
             RepairmentsViewCommand = new RelayCommand(o =>
             {
+                RepairmentsVm.LoadRepairmentsDB();
                 CurrentView = RepairmentsVm;
             });
 
             ReportsViewCommand = new RelayCommand(o =>
             {
+                ReportsVm.fillData();
                 CurrentView = ReportsVm;
             });
         }

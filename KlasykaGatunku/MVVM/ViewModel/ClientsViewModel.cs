@@ -1,5 +1,4 @@
-﻿using KlasykaGatunku.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +8,9 @@ using System.Windows.Input;
 using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using KlasykaGatunku.Core;
 using KlasykaGatunku.WindowsApp;
+using KlasykaGatunku.Utils;
 
 namespace KlasykaGatunku.MVVM.ViewModel
 {
@@ -21,6 +22,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
         public bool RegularCustomer { get; set; }
+        public string Regular { get; set; }
         public bool isSelected;
         public bool IsSelected
         {
@@ -43,6 +45,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
             PhoneNumber = 213702115;
             Email = "wieczne.pioto@yahoo.com";
             RegularCustomer = true;
+            Regular = "Yes";
             IsSelected = false;
         }
 
@@ -61,11 +64,14 @@ namespace KlasykaGatunku.MVVM.ViewModel
             PhoneNumber = phoneNumber;
             Email = email;
             RegularCustomer = regularCustomer;
+            Regular = regularCustomer ? "Yes" : "No";
             IsSelected = false;
         }
+
+        public string DisplayName => $"{Name} {Surname}";
     }
 
-    class ClientsViewModel : ObservableObject
+    public class ClientsViewModel : ObservableObject
     {
         private ObservableCollection<Customer> customers;
 
@@ -102,10 +108,6 @@ namespace KlasykaGatunku.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        static string databaseFileName = "KlasykaGatunku.accdb";
-        static string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, databaseFileName);
-        static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + absolutePath + ";";
 
         public ClientsViewModel()
         {
@@ -245,8 +247,11 @@ namespace KlasykaGatunku.MVVM.ViewModel
                 }
             }
 
-            if (id <= 0)
+            if (id <= 0 && selectedCount > 0)
             {
+                CustomMessageBoxOk messageBoxNoneSelected = new CustomMessageBoxOk();
+                messageBoxNoneSelected.Message = "Fatal error! Index out of range, contact software provider";
+                bool? result = messageBoxNoneSelected.ShowDialog();
                 return;
             }
 
@@ -275,7 +280,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
             else
             {
                 CustomMessageBoxOk messageBoxTooMany = new CustomMessageBoxOk();
-                messageBoxTooMany.Message = "Selected to many customers!\nYou can only modify one customer at once";
+                messageBoxTooMany.Message = "Selected to many customers! You can only modify one customer at once";
                 bool? result = messageBoxTooMany.ShowDialog();
             }
         }
@@ -286,28 +291,50 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             if (InsertCustomerDB(customer))
             {
-                Customers.Add(customer);
+                Customers.Clear();
+                LoadCustomersDB();
             }
         }
 
         public void RemoveCustomers()
         {
-            CustomMessageBoxYesNo messageBox = new CustomMessageBoxYesNo();
-            messageBox.Message = "Are you sure?";
+            bool anySelected = false;
 
-            bool? result = messageBox.ShowDialog();
-            if (result.HasValue && result.Value)
+            foreach (Customer customer in Customers)
             {
-                if (RemoveSelectedCustomers())
+                anySelected = customer.IsSelected;
+                if (anySelected)
                 {
-                    List<Customer> storedCustomers = new List<Customer>(Customers);
-                    Customers.Clear();
-                    foreach (Customer customer in storedCustomers)
-                    {
-                        Customers.Add(customer);
-                    }
-                    OnPropertyChanged(nameof(Customers));
+                    break;
                 }
+            }
+
+            if(anySelected)
+            { 
+                CustomMessageBoxYesNo messageBox = new CustomMessageBoxYesNo();
+                messageBox.Message = "Are you sure?";
+
+                bool? result = messageBox.ShowDialog();
+                if (result.HasValue && result.Value)
+                {
+                    if (RemoveSelectedCustomers())
+                    {
+                        List<Customer> storedCustomers = new List<Customer>(Customers);
+                        Customers.Clear();
+                        foreach (Customer customer in storedCustomers)
+                        {
+                            Customers.Add(customer);
+                        }
+                        OnPropertyChanged(nameof(Customers));
+                    }
+                }
+            }
+            else
+            {
+                CustomMessageBoxOk messageBox = new CustomMessageBoxOk();
+                messageBox.Message = "Select a customer to delete";
+
+                bool? result = messageBox.ShowDialog();
             }
         }
 
@@ -318,7 +345,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
             Customers = new ObservableCollection<Customer>();
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     string query = "SELECT * FROM Customers";
                     System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(query, connection);
@@ -344,6 +371,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
                                 PhoneNumber = customerPhoneNumber,
                                 Email = customerEmail,
                                 RegularCustomer = customerRegularCustomer,
+                                Regular = customerRegularCustomer ? "Yes" : "No",
                                 IsSelected = false // Set initial value to false
                             };
 
@@ -363,7 +391,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     string query = "INSERT INTO Customers (Name, Surname, [Phone Number], [E-mail], [Regular Customer]) " +
                                    "VALUES (@Name, @Surname, @PhoneNumber, @Email, @RegularCustomer)";
@@ -397,7 +425,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     List<Customer> selectedCustomers = new List<Customer>();
 
@@ -411,6 +439,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
                             System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(query, connection);
                             command.Parameters.AddWithValue("@CustomerId", customer.IdDB);
                             command.ExecuteNonQuery();
+                            ValuesHelper.RemoveRentalsByCustomerId(customer.IdDB);
                             selectedCustomers.Add(customer);
                         }
                     }
@@ -434,7 +463,7 @@ namespace KlasykaGatunku.MVVM.ViewModel
         {
             try
             {
-                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(connectionString))
+                using (System.Data.OleDb.OleDbConnection connection = new System.Data.OleDb.OleDbConnection(ValuesHelper.connectionString))
                 {
                     string query = "UPDATE Customers SET Name = @Name, Surname = @Surname, [Phone Number] = @PhoneNumber, " +
                                    "[E-mail] = @Email, [Regular Customer] = @RegularCustomer WHERE ID = @id";

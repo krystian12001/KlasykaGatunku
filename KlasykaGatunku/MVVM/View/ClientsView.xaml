@@ -110,7 +110,7 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="140"/>
-                                        <ColumnDefinition Width="160"/>
+                                        <ColumnDefinition Width="260"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Vertical" Grid.Column="0">
@@ -125,17 +125,16 @@
                                         <Label Content="{Binding Surname}" Style="{StaticResource DefaultLabelStyle}" />
                                         <Label Content="{Binding PhoneNumber}" Style="{StaticResource DefaultLabelStyle}" />
                                         <Label Content="{Binding Email}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding RegularCustomer}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Regular}" Style="{StaticResource DefaultLabelStyle}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Grid.Column="2" Margin="5">
-                                        <ToggleButton Height="40"
-                                                      Width="80"
-                                                      IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                                      Style="{StaticResource HoverToggleButtonStyle}" 
+                                        <ToggleButton   Height="40"
+                                                        Width="80"
+                                                        IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                        Style="{StaticResource HoverToggleButtonStyle}" 
                                         >
                                             Select
                                         </ToggleButton>
-
                                     </StackPanel>
                                 </Grid>
                             </Border>

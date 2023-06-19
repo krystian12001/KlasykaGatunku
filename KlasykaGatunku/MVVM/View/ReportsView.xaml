@@ -3,10 +3,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+                          xmlns:viewModels="clr-namespace:KlasykaGatunku.MVVM.ViewModel"
+
+             xmlns:converters="clr-namespace:KlasykaGatunku.Utils.Converters"
              xmlns:local="clr-namespace:KlasykaGatunku.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Reports" Foreground="White" FontSize="20" HorizontalAlignment="left" Margin="0,0,0,20"/>
-    </StackPanel>
+
+    <UserControl.Resources>
+        <converters:HeightConverter x:Key="HeightConverter" />
+    </UserControl.Resources>
+
+    <DockPanel>
+
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,0" VerticalAlignment="Top">
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding StartingDateString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="2" Height="30" Width="140" Style="{StaticResource DefaultLabelStyle}"/>
+                    <Label Content="Statistics Start date:" Margin="2" Height="30" Width="140" Style="{StaticResource DefaultLabelStyle}"/>
+                    <TextBox x:Name="StartingDateTextBox" Margin="2" Height="30" Width="140" PreviewTextInput="DateTextBox_PreviewTextInput" Text="{Binding StartDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DefaultInputStyle}"/> 
+                    <Button Height="40"
+                                                Margin="5"
+                                                Width="140"
+                                                Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                                                CommandParameter="{Binding}"
+                                                Command="{Binding SetStartClickCommand}"
+                    >
+                        Set starting date
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding EndingDateString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="2" Height="30" Width="140" Style="{StaticResource DefaultLabelStyle}"/>
+                    <Label Content="Statistics End date:" Margin="2" Height="30" Width="140" Style="{StaticResource DefaultLabelStyle}"/>
+                    <TextBox x:Name="EndingDateTextBox" Margin="2" Height="30" Width="140" PreviewTextInput="DateTextBox_PreviewTextInput" Text="{Binding EndDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DefaultInputStyle}"/>
+                    <Button Height="40"
+                                                Margin="5"
+                                                Width="140"
+                                                Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                                                CommandParameter="{Binding}"
+                                                Command="{Binding SetEndClickCommand}"
+                    >
+                        Set ending date
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <ScrollViewer x:Name="scrollBar" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding CarsDataPoints.Count, Converter={StaticResource HeightConverter}, UpdateSourceTrigger=PropertyChanged}" />
+                    <RowDefinition Height="{Binding RepairmentsDataPoints.Count, Converter={StaticResource HeightConverter}, UpdateSourceTrigger=PropertyChanged}" />
+                    <RowDefinition Height="{Binding ClientsDataPoints.Count, Converter={StaticResource HeightConverter}, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid.RowDefinitions>
+
+                <charting:Chart Title="Cars rent                        " Foreground="White" BorderBrush="Transparent" Width="855" Grid.Row="0">
+                    <charting:BarSeries Title="Data Series" ItemsSource="{Binding CarsDataPoints}" Background="Transparent" DependentValuePath="Value" IndependentValuePath="Label"/>
+                </charting:Chart>
+
+                <charting:Chart Title="Cars repairments                       " Foreground="White" BorderBrush="Transparent" Width="855" Grid.Row="1">
+                    <charting:BarSeries Title="Data Series" ItemsSource="{Binding RepairmentsDataPoints}" Background="Transparent" DependentValuePath="Value" IndependentValuePath="Label"/>
+                </charting:Chart>
+
+                <charting:Chart Title="Clients spendings                      " Foreground="White" BorderBrush="Transparent" Width="855" Grid.Row="2">
+                    <charting:BarSeries Title="Data Series" ItemsSource="{Binding ClientsDataPoints}" Background="Transparent" DependentValuePath="Value" IndependentValuePath="Label"/>
+                </charting:Chart>
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>

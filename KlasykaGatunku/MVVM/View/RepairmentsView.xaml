@@ -11,6 +11,7 @@
 
     <UserControl.Resources>
         <converters:BorderBrushConverter x:Key="BorderBrushConverter" />
+        <converters:ReversedVisibilityConverter x:Key="ReversedVisibilityConverter" />
     </UserControl.Resources>
 
     <DockPanel>
@@ -107,48 +108,29 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--<ItemsControl ItemsSource="{Binding Cars, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="{Binding IsSelected, Converter={StaticResource BorderBrushConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="3">
-                                <Image Source="pack://application:,,,/Img/das_auto.png" Height="300" Width="300" Margin="0,0,0,0"/>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>-->
-                <ItemsControl ItemsSource="{Binding Cars , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
+                <ItemsControl ItemsSource="{Binding Repairments , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="{Binding IsSelected, Converter={StaticResource BorderBrushConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="3">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="140"/>
-                                        <ColumnDefinition Width="160"/>
+                                        <ColumnDefinition Width="260"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Vertical" Grid.Column="0">
-                                        <Label Content="Brand: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Model: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Type: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Fuel: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Color: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Production Year: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Mileage: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Availability: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Price Category: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="Register Plate: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Car: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Issue: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Fix Cost: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Fixed: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="Occured: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <Label Content="{Binding Brand}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding Model}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding Type}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding Fuel}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding Color}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding ProductionYear}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding Mileage}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding Availability}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding PriceCategorySign}" Style="{StaticResource DefaultLabelStyle}" />
-                                        <Label Content="{Binding RegisterPlate}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding CarString}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding DamageDescription}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding FixCost}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding Fixed}" Style="{StaticResource DefaultLabelStyle}" />
+                                        <Label Content="{Binding DamageDate}" Style="{StaticResource DefaultLabelStyle}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Grid.Column="2" Margin="5">
                                         <ToggleButton Height="40"
@@ -160,14 +142,23 @@
                                         </ToggleButton>
 
                                     </StackPanel>
-
+                                    <Grid Grid.Column="2" VerticalAlignment="Bottom" Margin="5">
+                                        <Button Height="40"
+                                                Width="150"
+                                                Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                                                Visibility="{Binding IsFixed, Converter={StaticResource ReversedVisibilityConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Command="{Binding DataContext.FinishRepairmentCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                CommandParameter="{Binding}"
+                                        >
+                                            Repairment complete
+                                        </Button>
+                                    </Grid>
                                 </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Grid>
-
         </ScrollViewer>
     </DockPanel>
 </UserControl>

@@ -1,0 +1,61 @@
+﻿<Window x:Class="KlasykaGatunku.WindowsApp.QuickAddRepairmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KlasykaGatunku.WindowsApp"
+        mc:Ignorable="d"
+        Title="Add Repairment Window" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="170" Width="300"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+>
+    <Border BorderBrush="white" BorderThickness="1" Background="#202540" CornerRadius="10">
+        <Grid>
+            <Label Content="Insert repairment data" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="20" Height="auto" Style="{StaticResource DefaultLabelStyle}" />
+            <Grid Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <Label Content="Issue: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Cost: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Button x:Name="backButton"
+                            Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                            Width="80"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Margin="20,10,0,0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            FontFamily="Segoe MDL2 Assets"  
+                            FontSize="30" 
+                            FontWeight="Bold"
+                            Content="&#xEB96;"
+                            Click="backButton_Click"
+                    />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <TextBox x:Name="issueTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="issueTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <TextBox x:Name="costTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="costTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <Button x:Name="addButton"
+                            Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                            Width="80"
+                            Height="40"
+                            HorizontalAlignment="Right"
+                            Margin="0,10,5,0"
+                            Background="Transparent"
+                            BorderBrush="Transparent" 
+                            Click="addButton_Click"
+                    >
+                        <Image Source="pack://application:,,,/Img/add_icon_white.png" Height="33" Width="33" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlasykaGatunku"
         mc:Ignorable="d"
-        Title="AddRentalWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Add Rental Window" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="260" Width="300"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+>
+    <Border BorderBrush="white" BorderThickness="1" Background="#202540" CornerRadius="10">
+        <Grid>
+            <Label Content="Insert rental data" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="20" Height="auto" Style="{StaticResource DefaultLabelStyle}" />
+            <Grid Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <Label Content="Car: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Customer: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Starting date: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Ending date: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Label Content="Dates Format: " HorizontalContentAlignment="Right" Style="{StaticResource DefaultLabelStyle}" />
+                    <Button x:Name="backButton"
+                            Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                            Width="80"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Margin="20,10,0,0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            FontFamily="Segoe MDL2 Assets"  
+                            FontSize="30" 
+                            FontWeight="Bold"
+                            Content="&#xEB96;"
+                            Click="backButton_Click"
+                    />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <ComboBox x:Name="carComboBox" SelectionChanged="carComboBox_SelectedIndexChanged" Margin="2" Width="140" Height="26" />
+                    <ComboBox x:Name="customerComboBox" SelectionChanged="customerComboBox_SelectedIndexChanged" Margin="2" Width="140" Height="26" />
+                    <TextBox x:Name="StartingDateTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="DateTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <TextBox x:Name="EndingDateTextBox" Margin="2" Height="26" Width="140" PreviewTextInput="DateTextBox_PreviewTextInput" Style="{StaticResource DefaultInputStyle}"/>
+                    <Label Content="mm/dd/yyyy" HorizontalContentAlignment="Center" Style="{StaticResource DefaultLabelStyle}" />
+                    <Button x:Name="addButton"
+                            Style="{StaticResource HoverTopBarControlsButtonStyle}"
+                            Width="80"
+                            Height="40"
+                            HorizontalAlignment="Right"
+                            Margin="0,10,5,0"
+                            Background="Transparent"
+                            BorderBrush="Transparent" 
+                            Click="addButton_Click"
+                    >
+                        <Image Source="pack://application:,,,/Img/add_icon_white.png" Height="33" Width="33" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

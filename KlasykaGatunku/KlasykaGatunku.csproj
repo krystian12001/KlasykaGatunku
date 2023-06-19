@@ -48,6 +48,9 @@
     <ApplicationIcon>Img\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetProjects.DataVisualization.Toolkit, Version=6.1.94.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetProjects.WpfToolkit.DataVisualization.6.1.94\lib\net40\DotNetProjects.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -68,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Utils\HeightConverter.cs" />
+    <Compile Include="Utils\ValuesHelper.cs" />
+    <Compile Include="Utils\VisibilityConverter.cs" />
     <Compile Include="WindowsApp\AddCarWindow.xaml.cs">
       <DependentUpon>AddCarWindow.xaml</DependentUpon>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="WindowsApp\CustomMessageBoxYesNo.xaml.cs">
       <DependentUpon>CustomMessageBoxYesNo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsApp\EditRepairmentWindow.xaml.cs">
+      <DependentUpon>EditRepairmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsApp\EditRentalWindow.xaml.cs">
+      <DependentUpon>EditRentalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowsApp\EditCarWindow.xaml.cs">
       <DependentUpon>EditCarWindow.xaml</DependentUpon>
@@ -116,6 +128,12 @@
     <Compile Include="MVVM\View\ReportsView.xaml.cs">
       <DependentUpon>ReportsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowsApp\EditSinglePropertyWindow.xaml.cs">
+      <DependentUpon>EditSinglePropertyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsApp\QuickAddRepairmentWindow.xaml.cs">
+      <DependentUpon>QuickAddRepairmentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsApp\StartingWindow.xaml.cs">
       <DependentUpon>StartingWindow.xaml</DependentUpon>
     </Compile>
@@ -144,11 +162,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowsApp\EditRepairmentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowsApp\EditRentalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="WindowsApp\EditCarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowsApp\EditCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowsApp\EditSinglePropertyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\ReportsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowsApp\QuickAddRepairmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,6 +273,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

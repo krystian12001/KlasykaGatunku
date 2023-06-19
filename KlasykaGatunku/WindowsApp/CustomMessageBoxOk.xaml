@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlasykaGatunku"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="150" Width="200"
+        Title="{Binding Title}" Height="170" Width="250"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -20,10 +20,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Content="{Binding Message}" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource DefaultLabelStyle}"/>
+            <Label Margin="20" Height="70" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Style="{StaticResource DefaultLabelStyle}">
+                <TextBlock Text="{Binding Message}" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"/>
+            </Label>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="OK" Margin="5" Width="80" Click="OKButton_Click"/>
+                <Button Content="OK" Margin="5" Width="80" Click="OKButton_Click" Style="{StaticResource HoverTopBarControlsButtonStyle}"/>
                 <!--<Button Content="Cancel" Margin="5" Width="80" Click="CancelButton_Click"/>-->
             </StackPanel>
         </Grid>
